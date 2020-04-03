@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="64x64">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Favoritas Steven Santos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mis Musicas SS</h1>
+        <img src="images/radio1.gif" alt="">
+        <script>
+            function cambiarTrack(track) {
+                var path = track.getAttribute("path")
+                viejo_audio = document.getElementById("reproductor")
+                audio_padre = viejo_audio.parentNode
+                audio_padre.removeChild(viejo_audio)
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                nuevo_audio.setAttribute("autoplay", "autoplay")
+                source = document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                audio_padre.appendChild(nuevo_audio)
+            }
+
+            function cargarReproductor() {
+                var select = document.getElementById("selectTrack")
+                var path = select.options[0].getAttribute("path")
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                source = document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                padre = document.getElementById("reproductorBox")
+                padre.appendChild(nuevo_audio)
+            }
+        </script>
+
+        <div id="reproductorBox">
+            <select id="selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+                
+        <option path="lista_music/Asi eres tu.mp3">Anuel AA - Medusa</option>
+        <option path="lista_music/Supe Que Me Amabas.mp3">Vengan To</option>
+        <option path="lista_music/10-Me-Prefieres-a-Mi.mp3">Anuel AA - La Ultima Vez</option>
+        <option path="lista_music/10-No-Me-Doy-Por-Vencido.mp3">Gan-Ga Remix</option>
+        <option path="lista_music/Natti-Natasha-Feat.-Romeo-Santos-–-La-Mejor-Version-De-Mi-Remix.mp3">Coronao Now</option>
+        <option path="lista_music/Sech-Feat.-Ozuna-–-Si-Te-Vas.mp3">Mera Woo</option>
+        <option path="lista_music/Natti-Natasha-La-Mejor-Version-De-Mi.mp3">La Maxima</option> 
+        <option path="lista_music/Wisin-y-Yandel-Feat-Sech-–-Ganas-de-Ti.mp3">Callaita</option>
+        </div>
+    
+    <script>
+        cargarReproductor();
+    </script>
+
+</div>
+  
+
+</body>
+
+</html>
